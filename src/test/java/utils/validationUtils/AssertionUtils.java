@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class AssertionUtils {
     /**Validating the text of the button
      * Checking if the button is displayed
-     * Checking if the button is unable
+     * Checking if the button enable
      * @param element WebElement
      * @param expectedText expected text
      */
@@ -23,9 +23,9 @@ public class AssertionUtils {
      * @param elements WebElement
      * @param expectedTexts expected text
      */
-    public static void validateButtons(List<WebElement> elements, String[] expectedTexts) {
-        for (int i = 0; i < expectedTexts.length; i++) {
-            validateButton(elements.get(i), expectedTexts[i]);
+    public static void validateButtons(List<WebElement> elements, List<String> expectedTexts) {
+        for (int i = 0; i < expectedTexts.size(); i++) {
+            validateButton(elements.get(i), expectedTexts.get(i));
         }
     }
 
@@ -38,6 +38,16 @@ public class AssertionUtils {
         validateElementEnabled(element);
     }
 
+    /**Validating if the element is displayed and enable
+     *
+     * @param element WebElement
+     */
+    public static void validateElementLinks(List <WebElement> element) {
+        for (WebElement webElement : element) {
+            validateElementLink(webElement);
+        }
+    }
+
     /**Validating if element is presented
      * Validating if text of the element are equals to expected text
      * @param element WebeElement
@@ -45,7 +55,7 @@ public class AssertionUtils {
      */
     public static void validateElementText(WebElement element, String expectedText) {
         validateElementDisplayed(element);
-        assertEquals(element.getText(), expectedText);
+        assertEquals(expectedText, element.getText());
     }
 
     /**Validating WebElement text is equals to expected text from the List of Web Elements one by one
@@ -55,7 +65,7 @@ public class AssertionUtils {
      */
     public static void validateElementTexts(List<WebElement> elements, List<String> expectedTexts) {
         for (int i = 0; i < elements.size(); i++) {
-            assertEquals(elements.get(i).getText(), expectedTexts.get(i));
+            assertEquals(expectedTexts.get(i), elements.get(i).getText());
         }
     }
 
@@ -66,7 +76,7 @@ public class AssertionUtils {
      * @param expectedAttribute expected attribute
      */
     public static void validateElementAttribute(WebElement element, String attribute, String expectedAttribute) {
-        assertEquals(element.getAttribute(attribute), expectedAttribute);
+        assertEquals(expectedAttribute, element.getAttribute(attribute));
     }
 
     /**Validating if the element attribute text is contains to expected attribute
@@ -106,7 +116,7 @@ public class AssertionUtils {
      * @param expectedCss expected css
      */
     public static void validateElementCss(WebElement element, String css, String expectedCss) {
-        assertEquals(element.getCssValue(css), expectedCss);
+        assertEquals(expectedCss, element.getCssValue(css));
     }
 
     /**Validating element contains css
