@@ -23,6 +23,7 @@ public class PurpleMainPageSteps {
     @And("dismisses the popup")
     public void dismissesThePopup() {
 
+        purpleMain.closeEmailPopup.click();
     }
 
     @Then("Validate navigation headers")
