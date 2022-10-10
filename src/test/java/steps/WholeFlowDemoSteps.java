@@ -1,7 +1,6 @@
 package steps;
 
 import io.cucumber.java.en.And;
-import org.openqa.selenium.JavascriptExecutor;
 
 import static steps.Hooks.*;
 
@@ -19,8 +18,6 @@ public class WholeFlowDemoSteps {
 
     @And("user adds Purple Mattress to the cart")
     public void userAddsPurpleMattressToTheCart() {
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", purpleMattressesPage.addToCartButton);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", purpleMattressesPage.addToCartButton);
         purpleMattressesPage.addToCartButton.click();
         purpleMattressesPage.noThanksContinueToCart.click();
     }
@@ -28,5 +25,9 @@ public class WholeFlowDemoSteps {
     @And("user proceeds to checkout")
     public void userProceedsToCheckout() {
         purpleCartsPage.proceedToCheckOutLink.click();
+    }
+
+    @And("click on the Pillow button")
+    public void clickOnThePillowButton() {
     }
 }

@@ -13,5 +13,5 @@ Feature: Testing User Flow
       And user waits 4 seconds
       And user adds Purple Mattress to the cart
       And user proceeds to checkout
-      And user waits 100000 seconds
+      And user waits 10 seconds
 
