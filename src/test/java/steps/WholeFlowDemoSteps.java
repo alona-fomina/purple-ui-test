@@ -15,7 +15,8 @@ public class WholeFlowDemoSteps {
 
     @And("user clicks on {string} from top navigation")
     public void userClicksOnFromTopNavigation(String topMenuItemText) {
-        purpleMain.clickTopMenuItem(topMenuItemText);
+             purpleMain.clickTopMenuItem(topMenuItemText);
+
     }
 
     @And("user navigates to Purple Mattress")
@@ -74,5 +75,16 @@ public class WholeFlowDemoSteps {
     @And("user complete order")
     public void userCompleteOrder() {
         checkOutPage.completeOrderButton.click();
+    }
+
+    @And("user navigates to Pillows page")
+    public void userNavigatesToPillowsPage() {
+        pillowPage.purpleHarmonyPillow.click();
+    }
+
+    @And("user adds Purple Harmony™ Pillow to the cart")
+    public void userAddsPurpleHarmonyPillowToTheCart() {
+        JavaScriptUtils.clickElementScrollIfIntercepted(pillowPage.addToTheCarButton, 48);
+        pillowPage.noThanksContinueToCart.click();
     }
 }
