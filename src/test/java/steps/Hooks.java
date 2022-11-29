@@ -8,6 +8,7 @@ import pages.CheckOutPage;
 import pages.PurpleCartsPage;
 import pages.PurpleLogin;
 import pages.PurpleMain;
+import pages.bedding.BeddingPage;
 import pages.mattress.MattressesPage;
 import pages.pillows.PillowPage;
 import pages.sheets.SheetsPage;
@@ -23,6 +24,7 @@ public class Hooks {
     public static CheckOutPage checkOutPage;
     public static PillowPage pillowPage;
     public static SheetsPage sheetsPage;
+    public static BeddingPage beddingPage;
 
 
     @Before
@@ -35,6 +37,7 @@ public class Hooks {
         checkOutPage = new CheckOutPage();
         pillowPage = new PillowPage();
         sheetsPage = new SheetsPage();
+        beddingPage = new BeddingPage();
     }
 
     @After

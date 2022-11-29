@@ -4,10 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pages.CheckOutPage;
 import pages.mattress.MattressesPage;
-import utils.seleniumUtils.ActionsUtils;
-import utils.seleniumUtils.DropdownHandler;
-import utils.seleniumUtils.FrameUtils;
-import utils.seleniumUtils.JavaScriptUtils;
+import utils.seleniumUtils.*;
 
 import static steps.Hooks.*;
 
@@ -15,20 +12,47 @@ public class WholeFlowDemoSteps {
 
     @And("user clicks on {string} from top navigation")
     public void userClicksOnFromTopNavigation(String topMenuItemText) {
-             purpleMain.clickTopMenuItem(topMenuItemText);
-
+        purpleMain.clickTopMenuItem(topMenuItemText);
     }
 
-    @And("user navigates to Purple Mattress")
-    public void userNavigatesToPurpleMattress() {
-
-        purpleMattressesPage.purpleMattressShopNow.click();
+    @And("user navigates to {string}")
+    public void userNavigatesTo(String page) {
+        switch (page) {
+            case "Purple Mattress":
+                purpleMattressesPage.purpleMattressShopNow.click();
+                break;
+            case "Pillows":
+                pillowPage.purpleHarmonyPillow.click();
+                break;
+            case "Sheets":
+                sheetsPage.kidsSheets.click();
+                break;
+            case "Bedding":
+                beddingPage.purpleDuvet.click();
+                break;
+        }
     }
 
-    @And("user adds Purple Mattress to the cart")
-    public void userAddsPurpleMattressToTheCart() {
-        JavaScriptUtils.clickElementScrollIfIntercepted(purpleMattressesPage.addToCartButton, 48);
-        purpleMattressesPage.noThanksContinueToCart.click();
+    @And("user adds {string} to the cart")
+    public void userAddsToTheCart(String product) {
+        switch (product) {
+            case "Purple Mattress":
+                JavaScriptUtils.clickElementScrollIfIntercepted(purpleMattressesPage.addToCartButton, 48);
+                purpleMattressesPage.noThanksContinueToCart.click();
+                break;
+            case "Purple Harmony™ Pillow":
+                JavaScriptUtils.clickElementScrollIfIntercepted(pillowPage.addToTheCarButton, 48);
+                pillowPage.noThanksContinueToCart.click();
+                break;
+            case "Kid's Sheets":
+                JavaScriptUtils.clickElementScrollIfIntercepted(sheetsPage.addToTheCarButton, 48);
+                sheetsPage.noThanksContinueToCart.click();
+                break;
+            case "Purple Duvet":
+                JavaScriptUtils.clickElementScrollIfIntercepted(beddingPage.addToTheCarButton, 48);
+                beddingPage.noThanksContinueToCart.click();
+                break;
+        }
     }
 
     @And("user proceeds to checkout")
@@ -63,9 +87,9 @@ public class WholeFlowDemoSteps {
     @Then("user send credit card information")
     public void userSendCreditCardInformation() {
         FrameUtils.sendKeysToIframeElement(checkOutPage.nameOnTheCardIFrame, checkOutPage.creditCardFullNameInput, "Alona Fomina");
-        FrameUtils.sendKeysToIframeElement(checkOutPage.creditCardNumberIFrame,checkOutPage.creditCardNumberInput,"5500000000000004" );
+        FrameUtils.sendKeysToIframeElement(checkOutPage.creditCardNumberIFrame, checkOutPage.creditCardNumberInput, "5500000000000004");
         FrameUtils.sendKeysToIframeElement(checkOutPage.expirationDateIFrame, checkOutPage.expDateInput, "1126");
-        FrameUtils.sendKeysToIframeElement(checkOutPage.securityCodeIFrame,checkOutPage.securityCodeInput,"233");
+        FrameUtils.sendKeysToIframeElement(checkOutPage.securityCodeIFrame, checkOutPage.securityCodeInput, "233");
 
     }
 
@@ -74,25 +98,4 @@ public class WholeFlowDemoSteps {
         checkOutPage.completeOrderButton.click();
     }
 
-    @And("user navigates to Pillows page")
-    public void userNavigatesToPillowsPage() {
-        pillowPage.purpleHarmonyPillow.click();
-    }
-
-    @And("user adds Purple Harmony™ Pillow to the cart")
-    public void userAddsPurpleHarmonyPillowToTheCart() {
-        JavaScriptUtils.clickElementScrollIfIntercepted(pillowPage.addToTheCarButton, 48);
-        pillowPage.noThanksContinueToCart.click();
-    }
-
-    @And("user navigates to Sheets page")
-    public void userNavigatesToSheetsPage() {
-        sheetsPage.kidsSheets.click();
-    }
-
-    @And("user adds Kid's Sheet to the cart")
-    public void userAddsKidSSheetToTheCart() {
-        JavaScriptUtils.clickElementScrollIfIntercepted(sheetsPage.addToTheCarButton, 48);
-        sheetsPage.noThanksContinueToCart.click();
-    }
 }
