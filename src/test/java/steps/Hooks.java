@@ -10,6 +10,7 @@ import pages.PurpleLogin;
 import pages.PurpleMain;
 import pages.mattress.MattressesPage;
 import pages.pillows.PillowPage;
+import pages.sheets.SheetsPage;
 import utils.seleniumUtils.Driver;
 import utils.validationUtils.ReportUtils;
 
@@ -21,7 +22,7 @@ public class Hooks {
     public static PurpleLogin purpleLogin;
     public static CheckOutPage checkOutPage;
     public static PillowPage pillowPage;
-
+    public static SheetsPage sheetsPage;
 
 
     @Before
@@ -33,6 +34,7 @@ public class Hooks {
         purpleLogin = new PurpleLogin();
         checkOutPage = new CheckOutPage();
         pillowPage = new PillowPage();
+        sheetsPage = new SheetsPage();
     }
 
     @After

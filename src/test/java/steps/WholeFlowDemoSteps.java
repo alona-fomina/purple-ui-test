@@ -36,10 +36,6 @@ public class WholeFlowDemoSteps {
         JavaScriptUtils.clickElementScrollIfIntercepted(purpleCartsPage.proceedToCheckOutLink, 48);
     }
 
-    @And("click on the Pillow button")
-    public void clickOnThePillowButton() {
-    }
-
     @Then("user sends user information into shipping information menu")
     public void userSendsUserInformationIntoShippingInformationMenu() {
         checkOutPage.firstNameShippingInput.sendKeys("Alona");
@@ -70,6 +66,7 @@ public class WholeFlowDemoSteps {
         FrameUtils.sendKeysToIframeElement(checkOutPage.creditCardNumberIFrame,checkOutPage.creditCardNumberInput,"5500000000000004" );
         FrameUtils.sendKeysToIframeElement(checkOutPage.expirationDateIFrame, checkOutPage.expDateInput, "1126");
         FrameUtils.sendKeysToIframeElement(checkOutPage.securityCodeIFrame,checkOutPage.securityCodeInput,"233");
+
     }
 
     @And("user complete order")
@@ -86,5 +83,16 @@ public class WholeFlowDemoSteps {
     public void userAddsPurpleHarmonyPillowToTheCart() {
         JavaScriptUtils.clickElementScrollIfIntercepted(pillowPage.addToTheCarButton, 48);
         pillowPage.noThanksContinueToCart.click();
+    }
+
+    @And("user navigates to Sheets page")
+    public void userNavigatesToSheetsPage() {
+        sheetsPage.kidsSheets.click();
+    }
+
+    @And("user adds Kid's Sheet to the cart")
+    public void userAddsKidSSheetToTheCart() {
+        JavaScriptUtils.clickElementScrollIfIntercepted(sheetsPage.addToTheCarButton, 48);
+        sheetsPage.noThanksContinueToCart.click();
     }
 }
