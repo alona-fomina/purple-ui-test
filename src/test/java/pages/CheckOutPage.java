@@ -51,7 +51,7 @@ public class CheckOutPage extends ParentPage{
     @FindBy(xpath = "(//button[@class='btn'])[2]")
     public WebElement verifyShippingButton;
 
-    @FindBy(xpath = "(//button[@data-testid='primary-button']) [1]")
+    @FindBy(css = "div[class='LODjMDcjxPsI34T7DEXDdA==']")
     public WebElement nextPaymentInfoButton;
 
     @FindBy(xpath = "(//div[@role='radio'])[1]")

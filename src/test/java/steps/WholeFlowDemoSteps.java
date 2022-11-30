@@ -2,9 +2,7 @@ package steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import utils.seleniumUtils.DropdownHandler;
-import utils.seleniumUtils.FrameUtils;
-import utils.seleniumUtils.JavaScriptUtils;
+import utils.seleniumUtils.*;
 
 import static steps.Hooks.*;
 
@@ -41,9 +39,15 @@ public class WholeFlowDemoSteps {
 
     @And("user adds {string} to the cart")
     public void userAddsToTheCart(String product) {
-        JavaScriptUtils.clickElementScrollIfIntercepted(parentPage.addToTheCarButton, 48);
-        parentPage.noThanksContinueToCart.click();
+
+//        Waiter.sleep(5000); // waiting page to be loaded fully
+        parentPage.addToTheCarButton.click();
+        for (int i = 0; i < 30; i++) {
+//            JavaScriptUtils.clickElementScrollIfIntercepted(parentPage.addToTheCarButton, 48);
+            parentPage.addToTheCarButton.click();
         }
+        parentPage.noThanksContinueToCart.click();
+    }
 
     @And("user proceeds to checkout")
     public void userProceedsToCheckout() {

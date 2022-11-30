@@ -14,4 +14,7 @@ public class ParentPage {
 
     @FindBy(xpath = "//button[@data-testid='secondary-button']")
     public WebElement noThanksContinueToCart;
+
+    @FindBy(xpath = "//a[text()='Terms + Privacy']")
+    public WebElement footerTermsPrivacy;
 }

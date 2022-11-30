@@ -15,15 +15,6 @@ import java.util.List;
 public class Waiter {
     static WebDriverWait explicitWait;
 
-    /** Waiting element to be present in web page
-     *
-     * @param driver
-     * @param element
-     */
-    public static void waitForVisibilityOfElement(WebDriver driver, WebElement element) {
-        wait(driver).until(ExpectedConditions.visibilityOf(element));
-    }
-
     /** Waiting page title to be present
      *
      * @param driver selenium web driver
@@ -108,11 +99,11 @@ public class Waiter {
      *
      * @param length
      */
-    public static void sleep(long length) throws InterruptedException {
+    public static void sleep(long length) {
         try {
             Thread.sleep(length);
         } catch (Exception e) {
-            throw new InterruptedException("Interrupted the test!!!");
+            e.printStackTrace();
         }
     }
 
@@ -122,10 +113,7 @@ public class Waiter {
      * @return explicitWait
      */
     public static WebDriverWait wait(WebDriver driver) {
-        if (explicitWait == null){
-            explicitWait = new WebDriverWait(driver, Integer.parseInt(ConfigReader.getProperty("timeoutForExplicitWait")));
-        }
-        return explicitWait;
+        return new WebDriverWait(driver, Integer.parseInt(ConfigReader.getProperty("explicitWait")));
     }
 
 }
