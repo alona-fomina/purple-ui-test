@@ -4,13 +4,12 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
-import pages.CheckOutPage;
-import pages.PurpleCartsPage;
-import pages.PurpleLogin;
-import pages.PurpleMain;
+import pages.*;
+import pages.bedFrames.BedFramesPage;
 import pages.bedding.BeddingPage;
 import pages.mattress.MattressesPage;
 import pages.pillows.PillowPage;
+import pages.seatCushions.SeatCushionsPage;
 import pages.sheets.SheetsPage;
 import utils.seleniumUtils.Driver;
 import utils.validationUtils.ReportUtils;
@@ -25,7 +24,9 @@ public class Hooks {
     public static PillowPage pillowPage;
     public static SheetsPage sheetsPage;
     public static BeddingPage beddingPage;
-
+    public static ParentPage parentPage;
+    public static BedFramesPage bedFramesPage;
+    public static SeatCushionsPage seatCushionsPage;
 
     @Before
     public void setup() {
@@ -38,6 +39,10 @@ public class Hooks {
         pillowPage = new PillowPage();
         sheetsPage = new SheetsPage();
         beddingPage = new BeddingPage();
+        parentPage = new ParentPage();
+        bedFramesPage = new BedFramesPage();
+        seatCushionsPage = new SeatCushionsPage();
+
     }
 
     @After

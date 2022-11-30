@@ -3,9 +3,9 @@ Feature: Testing User Flow
 
   Background:
     Given user goes to "https://purple.com/"
-    And user waits 3 seconds
+#    And user waits 3 seconds
     And dismisses the popup
-    And user waits 2 seconds
+#    And user waits 2 seconds
 
   Scenario Outline:
     And user clicks on "<TopNavMenu>" from top navigation
@@ -23,8 +23,10 @@ Feature: Testing User Flow
     And user waits 5 seconds
     And user complete order
     Examples:
-      | TopNavMenu | page            | product                |
-      | Mattresses | Purple Mattress | Purple Mattress        |
-      | Pillows    | Pillows         | Purple Harmony™ Pillow |
-      | Sheets     | Sheets          | Kid's Sheets           |
-      | Bedding    | Bedding         | Purple Duvet           |
+      | TopNavMenu    | page            | product                |
+      | Mattresses    | Purple Mattress | Purple Mattress        |
+      | Pillows       | Pillows         | Purple Harmony™ Pillow |
+      | Sheets        | Sheets          | Kid's Sheets           |
+      | Bedding       | Bedding         | Purple Duvet           |
+      | Bed Frames    | Bed Frames      | Ascent Adjustable Base |
+      | Seat Cushions | Seat Cushions   | Ultimate Seat Cushion  |

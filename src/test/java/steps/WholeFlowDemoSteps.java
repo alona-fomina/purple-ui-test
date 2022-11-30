@@ -2,9 +2,9 @@ package steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import pages.CheckOutPage;
-import pages.mattress.MattressesPage;
-import utils.seleniumUtils.*;
+import utils.seleniumUtils.DropdownHandler;
+import utils.seleniumUtils.FrameUtils;
+import utils.seleniumUtils.JavaScriptUtils;
 
 import static steps.Hooks.*;
 
@@ -30,30 +30,20 @@ public class WholeFlowDemoSteps {
             case "Bedding":
                 beddingPage.purpleDuvet.click();
                 break;
+            case "Bed Frames":
+                bedFramesPage.ascentAdjustableBase.click();
+                break;
+            case "Seat Cushions":
+                seatCushionsPage.ultimateSeatCushion.click();
+                break;
         }
     }
 
     @And("user adds {string} to the cart")
     public void userAddsToTheCart(String product) {
-        switch (product) {
-            case "Purple Mattress":
-                JavaScriptUtils.clickElementScrollIfIntercepted(purpleMattressesPage.addToCartButton, 48);
-                purpleMattressesPage.noThanksContinueToCart.click();
-                break;
-            case "Purple Harmony™ Pillow":
-                JavaScriptUtils.clickElementScrollIfIntercepted(pillowPage.addToTheCarButton, 48);
-                pillowPage.noThanksContinueToCart.click();
-                break;
-            case "Kid's Sheets":
-                JavaScriptUtils.clickElementScrollIfIntercepted(sheetsPage.addToTheCarButton, 48);
-                sheetsPage.noThanksContinueToCart.click();
-                break;
-            case "Purple Duvet":
-                JavaScriptUtils.clickElementScrollIfIntercepted(beddingPage.addToTheCarButton, 48);
-                beddingPage.noThanksContinueToCart.click();
-                break;
+        JavaScriptUtils.clickElementScrollIfIntercepted(parentPage.addToTheCarButton, 48);
+        parentPage.noThanksContinueToCart.click();
         }
-    }
 
     @And("user proceeds to checkout")
     public void userProceedsToCheckout() {
