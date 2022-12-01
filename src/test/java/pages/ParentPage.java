@@ -10,7 +10,7 @@ public class ParentPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
     @FindBy(xpath = "//button[@data-testid='primary-button']/..")
-    public WebElement addToTheCarButton;
+    public WebElement addToTheCartButton;
 
     @FindBy(xpath = "//button[@data-testid='secondary-button']")
     public WebElement noThanksContinueToCart;

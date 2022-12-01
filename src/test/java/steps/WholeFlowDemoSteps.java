@@ -39,13 +39,12 @@ public class WholeFlowDemoSteps {
 
     @And("user adds {string} to the cart")
     public void userAddsToTheCart(String product) {
-
-//        Waiter.sleep(5000); // waiting page to be loaded fully
-        parentPage.addToTheCarButton.click();
-        for (int i = 0; i < 30; i++) {
-//            JavaScriptUtils.clickElementScrollIfIntercepted(parentPage.addToTheCarButton, 48);
-            parentPage.addToTheCarButton.click();
+        try {
+            ActionsUtils.persistentClick(parentPage.addToTheCartButton,5);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+
         parentPage.noThanksContinueToCart.click();
     }
 
