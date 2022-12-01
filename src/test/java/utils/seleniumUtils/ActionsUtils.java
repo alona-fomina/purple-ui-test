@@ -75,10 +75,15 @@ public class ActionsUtils {
 
     public static void persistentClick(WebElement element, int times) throws InterruptedException {
         for (int i = 0; i < times; i++) {
-            if (i == 0) JavaScriptUtils.clickElementScrollIfIntercepted(element, 48);
+            if (i == 0) JavaScriptUtils.clickElementScrollIfIntercepted(element, 100);
             else {
                 Thread.sleep(200);
-                element.click();
+                try{
+                    element.click();
+                }
+                catch (Exception e){
+                    break;
+                }
             }
         }
     }

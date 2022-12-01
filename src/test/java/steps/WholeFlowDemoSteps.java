@@ -40,10 +40,11 @@ public class WholeFlowDemoSteps {
     @And("user adds {string} to the cart")
     public void userAddsToTheCart(String product) {
         try {
-            ActionsUtils.persistentClick(parentPage.addToTheCartButton,5);
+            ActionsUtils.persistentClick(parentPage.addToTheCartButton,9999);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
 
         parentPage.noThanksContinueToCart.click();
     }

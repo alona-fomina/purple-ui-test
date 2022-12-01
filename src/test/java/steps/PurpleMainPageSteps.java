@@ -4,6 +4,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.NotFoundException;
 import utils.validationUtils.AssertionUtils;
 
 import static steps.Hooks.*;
@@ -22,7 +23,11 @@ public class PurpleMainPageSteps {
 
     @And("dismisses the popup")
     public void dismissesThePopup() {
-        purpleMain.closeEmailPopup.click();
+        try{
+        purpleMain.closeEmailPopup.click();}
+        catch (NotFoundException e){
+            System.out.println("Pop-up wasn't visible");
+        }
     }
 
     @Then("Validate navigation headers")
