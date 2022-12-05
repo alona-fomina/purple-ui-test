@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         publish = true,
         features = "src/test/resources",
         glue = "steps",
-        tags = "@E2E",
+        tags = "@ExpressCheckout",
         plugin = {"pretty", "html:target/cucumber-reports/Cucumber.html"}
 )
 public class Runner {

@@ -1,5 +1,7 @@
 package utils.validationUtils;
 
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -7,6 +9,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class AssertionUtils {
+    public static void validateURLStartsWith(WebDriver driver, String expectedURL){
+        Assert.assertTrue(driver.getCurrentUrl().startsWith(expectedURL));
+    }
+
     /**Validating the text of the button
      * Checking if the button is displayed
      * Checking if the button enable

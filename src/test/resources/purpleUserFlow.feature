@@ -5,6 +5,7 @@ Feature: Testing User Flow
     Given user goes to "https://purple.com/"
     And dismisses the popup
 
+  @StandardPurchase
   Scenario Outline:
     And user clicks on "<TopNavMenu>" from top navigation
     And user navigates to "<page>"
@@ -15,6 +16,24 @@ Feature: Testing User Flow
     And then user click on paymentInfo button
     Then user send credit card information
     And user complete order
+    Examples:
+      | TopNavMenu    | page            | product                |
+      | Mattresses    | Purple Mattress | Purple Mattress        |
+      | Pillows       | Pillows         | Purple Harmony™ Pillow |
+      | Sheets        | Sheets          | Kid's Sheets           |
+      | Bedding       | Bedding         | Purple Duvet           |
+      | Bed Frames    | Bed Frames      | Ascent Adjustable Base |
+      | Seat Cushions | Seat Cushions   | Ultimate Seat Cushion  |
+
+
+  @ExpressCheckout
+  Scenario Outline:
+    And user clicks on "<TopNavMenu>" from top navigation
+    And user navigates to "<page>"
+    And user adds "<product>" to the cart
+    And user proceeds to "paypal" express checkout where URL is "https://www.paypal.com/checkoutnow"
+    And user proceeds to "amazon" express checkout where URL is "https://www.amazon.com/"
+
     Examples:
       | TopNavMenu    | page            | product                |
       | Mattresses    | Purple Mattress | Purple Mattress        |

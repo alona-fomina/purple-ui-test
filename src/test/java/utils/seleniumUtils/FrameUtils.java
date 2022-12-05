@@ -9,4 +9,11 @@ public class FrameUtils {
         element.sendKeys(keys);
         Hooks.driver.switchTo().parentFrame();
     }
+
+    public static void clickOnElementInIFrame(WebElement frame, WebElement element){
+        Hooks.driver.switchTo().frame(frame);
+        JavaScriptUtils.clickElementScrollIfIntercepted(element, 45);
+        Hooks.driver.switchTo().parentFrame();
+    }
+
 }

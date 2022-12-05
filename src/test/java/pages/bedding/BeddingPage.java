@@ -12,9 +12,4 @@ public class BeddingPage {
     @FindBy(xpath = "(//a[@href='/duvet'])[2]")
     public WebElement purpleDuvet;
 
-    @FindBy(xpath = "//button[@data-testid='primary-button']/..")
-    public WebElement addToTheCarButton;
-
-    @FindBy(xpath = "//button[@data-testid='secondary-button']")
-    public WebElement noThanksContinueToCart;
 }

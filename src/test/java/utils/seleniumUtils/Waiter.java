@@ -15,14 +15,7 @@ import java.util.List;
 public class Waiter {
     static WebDriverWait explicitWait;
 
-    /** Waiting page title to be present
-     *
-     * @param driver selenium web driver
-     * @param title the page title
-     */
-    public static void waitUntilTitleIs(WebDriver driver, String title) {
-        wait(driver).until(ExpectedConditions.titleIs(title));
-    }
+
 
     /** Waiting for text to be visible in web element
      *
@@ -88,10 +81,22 @@ public class Waiter {
      * @param driver WebDriver instance
      * @param title title the page should have
      */
-    public static boolean waitForPageTitle(WebDriver driver, String title) {
+    public static boolean waitForPageTitleContains(WebDriver driver, String title) {
         return wait(driver).until(ExpectedConditions.titleContains(title));
     }
 
+    /** Waiting page title to be present
+     *
+     * @param driver selenium web driver
+     * @param title the page title
+     */
+    public static void waitUntilTitleIs(WebDriver driver, String title) {
+        wait(driver).until(ExpectedConditions.titleIs(title));
+    }
+
+    public static void waitUntilURLContains(WebDriver driver, String url){
+        wait(driver).until(ExpectedConditions.urlContains(url));
+    }
 
     /**
      * Sleep script for the specified length
