@@ -60,6 +60,18 @@ public class CheckOutPage extends ParentPage{
     @FindBy(xpath = "(//div[@role='radio'])[2]")
     public WebElement affirmPaymentRadioButton;
 
+    @FindBy(css = "div[class='_6lLnIWZPR4sDugGis7DXyw==']")
+    public WebElement getAffirmPaymentRadioButton;
+
+    @FindBy(css = "svg[aria-label='Affirm logo']")
+    public WebElement affirmLogo;
+
+    @FindBy(css = "input[class='focusable-form-field pro11TnYcue pro284gg8sY']")
+    public WebElement affirmMobileNumberInput;
+
+    @FindBy(css = "button[class='pro35Wfly4z pro2TSiV0Gx pro300N0DVx profBy8oj9g']")
+    public WebElement affirmContinueButton;
+
     @FindBy(xpath = "(//div[@role='radio'])[3]")
     public WebElement payPalPaymentRadioButton;
 

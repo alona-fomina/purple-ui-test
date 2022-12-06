@@ -64,7 +64,7 @@ public class WholeFlowDemoSteps {
         checkOutPage.lastNameShippingInput.sendKeys(faker.name().lastName());
         checkOutPage.streetAddressShippingInput.sendKeys(faker.address().streetAddress());
         checkOutPage.apartmentFlorShippingInput.sendKeys(faker.number().digit());
-        checkOutPage.zipShippingInput.sendKeys(faker.address().zipCode());
+        checkOutPage.zipShippingInput.sendKeys("60090");
         checkOutPage.cityShippingInput.sendKeys(faker.address().city());
         DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, "IL");
         checkOutPage.phoneNumberShippingInput.sendKeys(faker.phoneNumber().cellPhone());
@@ -128,5 +128,14 @@ public class WholeFlowDemoSteps {
 
         driver.close();
         driver.switchTo().window(mainWindowId);
+    }
+
+    @And("then user click on Affirm radio button")
+    public void thenUserClickOnAffirmRadioButton() {
+       checkOutPage.affirmPaymentRadioButton.click();
+       checkOutPage.getAffirmPaymentRadioButton.click();
+      AssertionUtils.validateElementDisplayed(checkOutPage.affirmLogo);
+      AssertionUtils.validateElementEnabled(checkOutPage.affirmContinueButton);
+      AssertionUtils.validateElementEnabled(checkOutPage.affirmMobileNumberInput);
     }
 }
