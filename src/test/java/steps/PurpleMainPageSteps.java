@@ -25,7 +25,7 @@ public class PurpleMainPageSteps {
     public void dismissesThePopup() {
         try{
         purpleMain.closeEmailPopup.click();}
-        catch (NotFoundException e){
+        catch (Exception e){
             System.out.println("Pop-up wasn't visible");
         }
     }

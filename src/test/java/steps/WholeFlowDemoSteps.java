@@ -1,5 +1,6 @@
 package steps;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.NotFoundException;
@@ -58,15 +59,16 @@ public class WholeFlowDemoSteps {
 
     @Then("user sends user information into shipping information menu")
     public void userSendsUserInformationIntoShippingInformationMenu() {
-        checkOutPage.firstNameShippingInput.sendKeys("dfghjk ");
-        checkOutPage.lastNameShippingInput.sendKeys("Fomina");
-        checkOutPage.streetAddressShippingInput.sendKeys("233 Wood Creeek Rd");
-        checkOutPage.apartmentFlorShippingInput.sendKeys("305");
-        checkOutPage.zipShippingInput.sendKeys("60090");
-        checkOutPage.cityShippingInput.sendKeys("Wheeling");
+        Faker faker = Faker.instance();
+        checkOutPage.firstNameShippingInput.sendKeys(faker.name().firstName());
+        checkOutPage.lastNameShippingInput.sendKeys(faker.name().lastName());
+        checkOutPage.streetAddressShippingInput.sendKeys(faker.address().streetAddress());
+        checkOutPage.apartmentFlorShippingInput.sendKeys(faker.number().digit());
+        checkOutPage.zipShippingInput.sendKeys(faker.address().zipCode());
+        checkOutPage.cityShippingInput.sendKeys(faker.address().city());
         DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, "IL");
-        checkOutPage.phoneNumberShippingInput.sendKeys("2345678900");
-        checkOutPage.emailShippingInput.sendKeys("alona@purple.com");
+        checkOutPage.phoneNumberShippingInput.sendKeys(faker.phoneNumber().cellPhone());
+        checkOutPage.emailShippingInput.sendKeys(faker.name().username()+"@gmail.com");
         checkOutPage.nextDeliveryMethod.click();
     }
 
@@ -83,7 +85,7 @@ public class WholeFlowDemoSteps {
 
     @Then("user send credit card information")
     public void userSendCreditCardInformation() {
-        FrameUtils.sendKeysToIframeElement(checkOutPage.nameOnTheCardIFrame, checkOutPage.creditCardFullNameInput, "Alona FominaAlona Fomina");
+        FrameUtils.sendKeysToIframeElement(checkOutPage.nameOnTheCardIFrame, checkOutPage.creditCardFullNameInput, "Alona Fomina");
         FrameUtils.sendKeysToIframeElement(checkOutPage.creditCardNumberIFrame, checkOutPage.creditCardNumberInput, "5500000000000004");
         FrameUtils.sendKeysToIframeElement(checkOutPage.expirationDateIFrame, checkOutPage.expDateInput, "1126");
         FrameUtils.sendKeysToIframeElement(checkOutPage.securityCodeIFrame, checkOutPage.securityCodeInput, "233");

@@ -16,22 +16,22 @@ public class MattressesPage extends ParentPage {
     @FindBy(xpath = "//button[@data-testid='secondary-button']")
     public WebElement noThanksContinueToCart;
 
-    @FindBy(xpath = "(//a[@href='/mattresses/newday'] )[4]")
+    @FindBy(xpath = "(//a[@href='/mattresses/newday'])[4]")
     public WebElement newDayShopNow;
 
-    @FindBy(xpath = "(//a[@href='/mattresses/purple-bed'] )[4]")
+    @FindBy(xpath = "(//a[@href='/mattresses/purple-bed'])[4]")
     public WebElement purpleMattressShopNow;
 
-    @FindBy(xpath = "(//a[@href='/mattresses/plus'] )[4]")
+    @FindBy(xpath = "(//a[@href='/mattresses/plus'])[4]")
     public WebElement purplePlusShopNow;
 
-    @FindBy (xpath = "(//a[@href='/mattresses/hybrid'] )[4]")
+    @FindBy (xpath = "(//a[@href='/mattresses/hybrid'])[4]")
     public WebElement purpleHybridShopNow;
 
-    @FindBy (xpath = "(//a[@href='/mattresses/hybrid-premier'] )[4]")
+    @FindBy (xpath = "(//a[@href='/mattresses/hybrid-premier'])[4]")
     public WebElement hybridPremier3ShopNow;
 
-    @FindBy (xpath = "(//a[@href='/mattresses/hybrid-premier-4'] )[4]")
+    @FindBy (xpath = "(//a[@href='/mattresses/hybrid-premier-4'])[4]")
     public WebElement hybridPremier4ShopNow;
 
     @FindBy (xpath = "(//h2[starts-with(@class, 'field heading')])[2]")
