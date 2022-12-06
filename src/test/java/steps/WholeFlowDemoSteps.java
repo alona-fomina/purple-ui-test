@@ -62,11 +62,11 @@ public class WholeFlowDemoSteps {
         Faker faker = Faker.instance();
         checkOutPage.firstNameShippingInput.sendKeys(faker.name().firstName());
         checkOutPage.lastNameShippingInput.sendKeys(faker.name().lastName());
-        checkOutPage.streetAddressShippingInput.sendKeys(faker.address().streetAddress());
-        checkOutPage.apartmentFlorShippingInput.sendKeys(faker.number().digit());
-        checkOutPage.zipShippingInput.sendKeys("60090");
-        checkOutPage.cityShippingInput.sendKeys(faker.address().city());
-        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, "IL");
+        checkOutPage.streetAddressShippingInput.sendKeys("4100 Chapel Ridge Rd");
+        checkOutPage.apartmentFlorShippingInput.sendKeys("8");
+        checkOutPage.zipShippingInput.sendKeys("84043");
+        checkOutPage.cityShippingInput.sendKeys("Lehi");
+        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, "UT");
         checkOutPage.phoneNumberShippingInput.sendKeys(faker.phoneNumber().cellPhone());
         checkOutPage.emailShippingInput.sendKeys(faker.name().username()+"@gmail.com");
         checkOutPage.nextDeliveryMethod.click();
@@ -137,5 +137,21 @@ public class WholeFlowDemoSteps {
       AssertionUtils.validateElementDisplayed(checkOutPage.affirmLogo);
       AssertionUtils.validateElementEnabled(checkOutPage.affirmContinueButton);
       AssertionUtils.validateElementEnabled(checkOutPage.affirmMobileNumberInput);
+    }
+
+    @Then("user sends user information randomly")
+    public void userSendsUserInformationRandomly() {
+        Faker faker = Faker.instance();
+        checkOutPage.firstNameShippingInput.sendKeys(faker.name().firstName());
+        checkOutPage.lastNameShippingInput.sendKeys(faker.name().lastName());
+
+        checkOutPage.streetAddressShippingInput.sendKeys("" + faker.number().numberBetween(0,100));
+        checkOutPage.autofillShippingAddresses.get(faker.number().numberBetween(0,5)).click();
+
+        checkOutPage.phoneNumberShippingInput.sendKeys(faker.phoneNumber().cellPhone());
+
+        checkOutPage.emailShippingInput.sendKeys(faker.name().username()+"@gmail.com");
+
+        checkOutPage.nextDeliveryMethod.click();
     }
 }

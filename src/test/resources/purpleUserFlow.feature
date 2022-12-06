@@ -12,6 +12,7 @@ Feature: Testing User Flow
     And user adds "<product>" to the cart
     And user proceeds to checkout
     Then user sends user information into shipping information menu
+#    Then user sends user information randomly
     And user confirm that shipping is the same as billing address
     And then user click on paymentInfo button
     Then user send credit card information

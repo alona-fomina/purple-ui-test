@@ -5,10 +5,11 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class CheckOutPage extends ParentPage{
-    public CheckOutPage(){
+public class CheckOutPage extends ParentPage {
+    public CheckOutPage() {
         super();
     }
+
     @FindBy(css = "#MainBlockAmzBtn_button")
     public WebElement amazonPayButton;
 
@@ -51,7 +52,7 @@ public class CheckOutPage extends ParentPage{
     @FindBy(xpath = "(//button[@class='btn'])[2]")
     public WebElement verifyShippingButton;
 
-    @FindBy(css = "div[class='LODjMDcjxPsI34T7DEXDdA==']")
+    @FindBy(xpath = "(//button[@data-testid='primary-button'])[1]")
     public WebElement nextPaymentInfoButton;
 
     @FindBy(xpath = "(//div[@role='radio'])[1]")
@@ -131,4 +132,7 @@ public class CheckOutPage extends ParentPage{
 
     @FindBy(xpath = "(//button[text()='Complete Order'])[1]")
     public WebElement completeOrderButton;
+
+    @FindBy(css = "#stepshipping .pac-container div")
+    public List<WebElement> autofillShippingAddresses;
 }
