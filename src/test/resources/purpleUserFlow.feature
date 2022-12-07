@@ -2,8 +2,11 @@
 Feature: Testing User Flow
 
   Background:
-    Given user goes to "https://purple.com"
+#    Given user goes to "https://purple3qa2.prod.acquia-sites.com/"
+    Given user goes to "https://purple.com/"
+    And user waits 5 seconds
     And dismisses the popup
+#    And user agrees with the privacy policy
 
   @StandardPurchase
   Scenario Outline:
@@ -11,8 +14,8 @@ Feature: Testing User Flow
     And user navigates to "<page>"
     And user adds "<product>" to the cart
     And user proceeds to checkout
-    Then user sends user information into shipping information menu
-#    Then user sends user information randomly
+#    Then user sends user information into shipping information menu
+    Then user sends user information randomly
     And user confirm that shipping is the same as billing address
     And then user click on paymentInfo button
     Then user send credit card information
@@ -38,11 +41,11 @@ Feature: Testing User Flow
     Examples:
       | TopNavMenu    | page            | product                |
       | Mattresses    | Purple Mattress | Purple Mattress        |
-      | Pillows       | Pillows         | Purple Harmony™ Pillow |
-      | Sheets        | Sheets          | Kid's Sheets           |
-      | Bedding       | Bedding         | Purple Duvet           |
-      | Bed Frames    | Bed Frames      | Ascent Adjustable Base |
-      | Seat Cushions | Seat Cushions   | Ultimate Seat Cushion  |
+#      | Pillows       | Pillows         | Purple Harmony™ Pillow |
+#      | Sheets        | Sheets          | Kid's Sheets           |
+#      | Bedding       | Bedding         | Purple Duvet           |
+#      | Bed Frames    | Bed Frames      | Ascent Adjustable Base |
+#      | Seat Cushions | Seat Cushions   | Ultimate Seat Cushion  |
 
 
   @AffirmFinanceCheckOut
@@ -58,8 +61,8 @@ Feature: Testing User Flow
     Examples:
       | TopNavMenu    | page            | product                |
       | Mattresses    | Purple Mattress | Purple Mattress        |
-      | Pillows       | Pillows         | Purple Harmony™ Pillow |
-      | Sheets        | Sheets          | Kid's Sheets           |
-      | Bedding       | Bedding         | Purple Duvet           |
-      | Bed Frames    | Bed Frames      | Ascent Adjustable Base |
-      | Seat Cushions | Seat Cushions   | Ultimate Seat Cushion  |
+#      | Pillows       | Pillows         | Purple Harmony™ Pillow |
+#      | Sheets        | Sheets          | Kid's Sheets           |
+#      | Bedding       | Bedding         | Purple Duvet           |
+#      | Bed Frames    | Bed Frames      | Ascent Adjustable Base |
+#      | Seat Cushions | Seat Cushions   | Ultimate Seat Cushion  |

@@ -7,6 +7,8 @@ import org.openqa.selenium.NotFoundException;
 import utils.seleniumUtils.*;
 import utils.validationUtils.AssertionUtils;
 
+import java.util.Locale;
+
 import static steps.Hooks.*;
 
 public class WholeFlowDemoSteps {
@@ -59,16 +61,21 @@ public class WholeFlowDemoSteps {
 
     @Then("user sends user information into shipping information menu")
     public void userSendsUserInformationIntoShippingInformationMenu() {
-        Faker faker = Faker.instance();
-        checkOutPage.firstNameShippingInput.sendKeys(faker.name().firstName());
-        checkOutPage.lastNameShippingInput.sendKeys(faker.name().lastName());
-        checkOutPage.streetAddressShippingInput.sendKeys("4100 Chapel Ridge Rd");
-        checkOutPage.apartmentFlorShippingInput.sendKeys("8");
-        checkOutPage.zipShippingInput.sendKeys("84043");
-        checkOutPage.cityShippingInput.sendKeys("Lehi");
-        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, "UT");
+        Faker faker = new Faker(new Locale("en-us"));
+
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String email = faker.internet().emailAddress();
+
+        checkOutPage.firstNameShippingInput.sendKeys(firstName);
+        checkOutPage.lastNameShippingInput.sendKeys(lastName);
+        checkOutPage.streetAddressShippingInput.sendKeys("4100 N Chapel Hill Dr");
+//        checkOutPage.apartmentFlorShippingInput.sendKeys("8");
+        checkOutPage.zipShippingInput.sendKeys("60004");
+        checkOutPage.cityShippingInput.sendKeys("Arlington Heights");
+        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, "IL");
         checkOutPage.phoneNumberShippingInput.sendKeys(faker.phoneNumber().cellPhone());
-        checkOutPage.emailShippingInput.sendKeys(faker.name().username()+"@gmail.com");
+        checkOutPage.emailShippingInput.sendKeys(email);
         checkOutPage.nextDeliveryMethod.click();
     }
 
@@ -145,17 +152,34 @@ public class WholeFlowDemoSteps {
 
     @Then("user sends user information randomly")
     public void userSendsUserInformationRandomly() {
-        Faker faker = Faker.instance();
-        checkOutPage.firstNameShippingInput.sendKeys(faker.name().firstName());
-        checkOutPage.lastNameShippingInput.sendKeys(faker.name().lastName());
+        Faker faker = new Faker(new Locale("en-us"));
 
-        checkOutPage.streetAddressShippingInput.sendKeys("" + faker.number().numberBetween(0,100));
-        checkOutPage.autofillShippingAddresses.get(faker.number().numberBetween(0,5)).click();
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String email = faker.internet().emailAddress();
+        String street1 = faker.address().streetAddress();
+        String city = faker.address().city();
+        String state = faker.address().stateAbbr();
+        String zipCode = faker.address().zipCodeByState(state);
 
+        checkOutPage.firstNameShippingInput.sendKeys(firstName);
+        checkOutPage.lastNameShippingInput.sendKeys(lastName);
+        checkOutPage.streetAddressShippingInput.sendKeys(street1);
+//        checkOutPage.apartmentFlorShippingInput.sendKeys("8");
+        checkOutPage.zipShippingInput.sendKeys(zipCode);
+        checkOutPage.cityShippingInput.sendKeys(city);
+        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, state);
         checkOutPage.phoneNumberShippingInput.sendKeys(faker.phoneNumber().cellPhone());
-
-        checkOutPage.emailShippingInput.sendKeys(faker.name().username()+"@gmail.com");
-
+        checkOutPage.emailShippingInput.sendKeys(email);
         checkOutPage.nextDeliveryMethod.click();
+    }
+
+    @And("user agrees with the privacy policy")
+    public void userAgreesWithThePrivacyPolicy() {
+        try{
+            purpleMain.policyPopUpButton.click();}
+        catch (NotFoundException e){
+            System.out.println("Pop-up wasn't visible");
+        }
     }
 }

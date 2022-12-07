@@ -8,7 +8,7 @@ import java.util.Locale;
 
 public class test {
     public static void main(String[] args) {
-        Faker faker = Faker.instance();
+//        Faker faker = Faker.instance();
 
 //        System.out.println(faker.address().fullAddress());
 //        System.out.println(faker.name().fullName());
@@ -33,6 +33,18 @@ public class test {
 //
 //        System.out.println(new Faker(new Locale("en-US")).address().fullAddress());
 
-        System.out.println(Faker.instance().number().numberBetween(0,5));
+//        System.out.println(Faker.instance().number().numberBetween(0,5));
+
+        Faker faker = new Faker(new Locale("en-us"));
+//        String state = faker.address().stateAbbr();
+//        System.out.println(state);
+//        System.out.println(faker.address().zipCodeByState(state));
+        System.out.println(faker.internet().domainName());
+        System.out.println(faker.internet().emailAddress());
+        System.out.println(faker.internet().safeEmailAddress());
+        System.out.println(faker.internet().domainSuffix());
+
+
     }
+
 }
