@@ -52,11 +52,14 @@ public class CheckOutPage extends ParentPage {
     @FindBy(xpath = "(//button[@class='btn'])[2]")
     public WebElement verifyShippingButton;
 
-    @FindBy(xpath = "(//button[@data-testid='primary-button'])[1]")
+    @FindBy(css = "#stepdeliveryMethods button")
     public WebElement nextPaymentInfoButton;
 
     @FindBy(xpath = "(//div[@role='radio'])[1]")
     public WebElement creditCardRadioButton;
+
+    @FindBy(css = "#checkout-application")
+    public WebElement affirmIframe;
 
     @FindBy(xpath = "(//div[@role='radio'])[2]")
     public WebElement affirmPaymentRadioButton;
@@ -72,6 +75,9 @@ public class CheckOutPage extends ParentPage {
 
     @FindBy(css = "button[class='pro35Wfly4z pro2TSiV0Gx pro300N0DVx profBy8oj9g']")
     public WebElement affirmContinueButton;
+
+    @FindBy(css = "#partnership-text")
+    public WebElement affirmPartnershipText;
 
     @FindBy(xpath = "(//div[@role='radio'])[3]")
     public WebElement payPalPaymentRadioButton;

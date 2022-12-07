@@ -2,7 +2,7 @@
 Feature: Testing User Flow
 
   Background:
-    Given user goes to "https://purple.com/"
+    Given user goes to "https://purple.com"
     And dismisses the popup
 
   @StandardPurchase

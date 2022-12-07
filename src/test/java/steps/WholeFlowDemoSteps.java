@@ -134,7 +134,11 @@ public class WholeFlowDemoSteps {
     public void thenUserClickOnAffirmRadioButton() {
        checkOutPage.affirmPaymentRadioButton.click();
        checkOutPage.getAffirmPaymentRadioButton.click();
+
+       driver.switchTo().frame(checkOutPage.affirmIframe);
       AssertionUtils.validateElementDisplayed(checkOutPage.affirmLogo);
+      AssertionUtils.validateElementDisplayed(checkOutPage.affirmPartnershipText);
+
       AssertionUtils.validateElementEnabled(checkOutPage.affirmContinueButton);
       AssertionUtils.validateElementEnabled(checkOutPage.affirmMobileNumberInput);
     }
