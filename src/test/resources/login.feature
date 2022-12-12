@@ -7,6 +7,6 @@ Feature: login
     And user waits 7 seconds
     And takes the "access_token" from local storage
 
-#    Then user hits the active cart API
+
 
 

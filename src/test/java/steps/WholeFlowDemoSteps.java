@@ -154,38 +154,15 @@ public class WholeFlowDemoSteps {
 
     @Then("user sends user information randomly")
     public void userSendsUserInformationRandomly() {
-        Faker faker = new Faker(new Locale("en-us"));
 
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String email = faker.internet().emailAddress();
-        String street1 = faker.address().streetAddress();
-        String city = faker.address().city();
-        String state = "";
-        do {
-            state = faker.address().stateAbbr();
-        } while (state.equals("AL") || state.equals("HI"));
-        String zipCode = faker.address().zipCodeByState(state);
-
-        System.out.println("Your random user information {" +
-                "firstName = " + firstName +
-                ", lastName = " + lastName +
-                ", email = " + email +
-                ", street1 = " + street1 +
-                ", city = " + city +
-                ", state = " + state +
-                ", zipCode = " + zipCode +
-                "}");
-
-        checkOutPage.firstNameShippingInput.sendKeys(firstName);
-        checkOutPage.lastNameShippingInput.sendKeys(lastName);
-        checkOutPage.streetAddressShippingInput.sendKeys(street1);
-//        checkOutPage.apartmentFlorShippingInput.sendKeys("8");
-        checkOutPage.zipShippingInput.sendKeys(zipCode);
-        checkOutPage.cityShippingInput.sendKeys(city);
-        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, state);
-        checkOutPage.phoneNumberShippingInput.sendKeys(faker.phoneNumber().cellPhone());
-        checkOutPage.emailShippingInput.sendKeys(email);
+        checkOutPage.firstNameShippingInput.sendKeys(purpleRandomUser.firstName);
+        checkOutPage.lastNameShippingInput.sendKeys(purpleRandomUser.lastName);
+        checkOutPage.streetAddressShippingInput.sendKeys(purpleRandomUser.streetAddress1);
+        checkOutPage.zipShippingInput.sendKeys(purpleRandomUser.zipCode);
+        checkOutPage.cityShippingInput.sendKeys(purpleRandomUser.city);
+        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, purpleRandomUser.state);
+        checkOutPage.phoneNumberShippingInput.sendKeys(purpleRandomUser.phoneNumber);
+        checkOutPage.emailShippingInput.sendKeys(purpleRandomUser.emailAddress);
         checkOutPage.nextDeliveryMethod.click();
     }
 

@@ -8,9 +8,12 @@ import pages.*;
 import pages.bedFrames.BedFramesPage;
 import pages.bedding.BeddingPage;
 import pages.mattress.MattressesPage;
+import pages.myAccount.CreateAccountPage;
+import pages.myAccount.SignInPage;
 import pages.pillows.PillowPage;
 import pages.seatCushions.SeatCushionsPage;
 import pages.sheets.SheetsPage;
+import utils.dataHelpers.PurpleUser;
 import utils.seleniumUtils.Driver;
 import utils.validationUtils.ReportUtils;
 
@@ -27,6 +30,10 @@ public class Hooks {
     public static ParentPage parentPage;
     public static BedFramesPage bedFramesPage;
     public static SeatCushionsPage seatCushionsPage;
+    public static SignInPage signInPage;
+    public static CreateAccountPage createAccountPage;
+    public static PurpleUser purpleUser;
+    public static PurpleUser purpleRandomUser;
 
     @Before
     public void setup() {
@@ -42,7 +49,10 @@ public class Hooks {
         parentPage = new ParentPage();
         bedFramesPage = new BedFramesPage();
         seatCushionsPage = new SeatCushionsPage();
-
+        signInPage = new SignInPage();
+        createAccountPage = new CreateAccountPage();
+        purpleUser = PurpleUser.getInstance();
+        purpleRandomUser = PurpleUser.getRandomInstance();
     }
 
     @After

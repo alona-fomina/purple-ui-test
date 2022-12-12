@@ -23,6 +23,9 @@ public class PurpleMain extends ParentPage{
     @FindBy(css = "button[class='root__OblK1 root__eL_b5']")
     public WebElement policyPopUpButton;
 
+    @FindBy(css = "a[href='/account'")
+    public WebElement myAccountButton;
+
     public void clickTopMenuItem(String menuItem){
         for (WebElement item : topNavMenuItems) {
             if (item.getText().equals(menuItem)){
