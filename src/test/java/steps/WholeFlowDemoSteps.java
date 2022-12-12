@@ -92,6 +92,7 @@ public class WholeFlowDemoSteps {
 
     @Then("user send credit card information")
     public void userSendCreditCardInformation() {
+        Waiter.waitForElementVisible(driver, checkOutPage.nameOnTheCardIFrame);
         FrameUtils.sendKeysToIframeElement(checkOutPage.nameOnTheCardIFrame, checkOutPage.creditCardFullNameInput, "Alona Fomina");
         FrameUtils.sendKeysToIframeElement(checkOutPage.creditCardNumberIFrame, checkOutPage.creditCardNumberInput, "5500000000000004");
         FrameUtils.sendKeysToIframeElement(checkOutPage.expirationDateIFrame, checkOutPage.expDateInput, "1126");
@@ -139,6 +140,7 @@ public class WholeFlowDemoSteps {
 
     @And("then user click on Affirm radio button")
     public void thenUserClickOnAffirmRadioButton() {
+        Waiter.waitForElementClickable(driver,checkOutPage.affirmPaymentRadioButton);
        checkOutPage.affirmPaymentRadioButton.click();
        checkOutPage.getAffirmPaymentRadioButton.click();
 
@@ -159,8 +161,21 @@ public class WholeFlowDemoSteps {
         String email = faker.internet().emailAddress();
         String street1 = faker.address().streetAddress();
         String city = faker.address().city();
-        String state = faker.address().stateAbbr();
+        String state = "";
+        do {
+            state = faker.address().stateAbbr();
+        } while (state.equals("AL") || state.equals("HI"));
         String zipCode = faker.address().zipCodeByState(state);
+
+        System.out.println("Your random user information {" +
+                "firstName = " + firstName +
+                ", lastName = " + lastName +
+                ", email = " + email +
+                ", street1 = " + street1 +
+                ", city = " + city +
+                ", state = " + state +
+                ", zipCode = " + zipCode +
+                "}");
 
         checkOutPage.firstNameShippingInput.sendKeys(firstName);
         checkOutPage.lastNameShippingInput.sendKeys(lastName);
