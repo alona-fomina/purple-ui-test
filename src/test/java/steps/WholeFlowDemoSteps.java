@@ -110,7 +110,7 @@ public class WholeFlowDemoSteps {
      * @param expectedURL
      */
     @And("user proceeds to {string} express checkout where URL is {string}")
-    public void userProceedsToExpressCheckoutWhereURLIs(String expressWay, String expectedURL) {
+    public void userProceedsToExpressCheckoutWhereURLIs(String expressWay, String expectedURL) throws InterruptedException {
 
         switch (expressWay.toLowerCase()) {
             case "amazon":
@@ -118,7 +118,7 @@ public class WholeFlowDemoSteps {
                 break;
             case "paypal":
 //                FrameUtils.clickOnElementInIFrame(purpleCartsPage.payPalIFrame, purpleCartsPage.expressCheckOutPayPal);
-                purpleCartsPage.expressCheckOutPayPal2.click();
+                ActionsUtils.persistentClick(purpleCartsPage.expressCheckOutPayPal2, 32);
                 break;
             default:
                 throw new NotFoundException("The express way you are trying to checkout doesn't exist!");

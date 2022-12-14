@@ -1,4 +1,4 @@
-@E2E
+@E2E @Smoke
 Feature: Testing User Flow
 
   Background:
