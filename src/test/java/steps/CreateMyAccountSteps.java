@@ -1,7 +1,10 @@
 package steps;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+
+import java.util.Locale;
 
 import static steps.Hooks.*;
 
@@ -18,5 +21,9 @@ public class CreateMyAccountSteps {
 
     @And("user puts user information in create account section")
     public void userPutsUserInformationInCreateAccountSection() {
+        createAccountPage.firstNameInput.sendKeys(purpleRandomUser.firstName);
+        createAccountPage.lastNameInput.sendKeys(purpleRandomUser.lastName);
+        createAccountPage.phoneNumberInput.sendKeys(purpleRandomUser.phoneNumber);
+        createAccountPage.passwordInput.sendKeys(purpleRandomUser.password);
     }
 }

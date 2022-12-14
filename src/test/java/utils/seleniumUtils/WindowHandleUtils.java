@@ -1,8 +1,11 @@
 package utils.seleniumUtils;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Set;
+
+import static steps.Hooks.*;
 
 public class WindowHandleUtils {
 
@@ -65,5 +68,23 @@ public class WindowHandleUtils {
             }
         }
         return currentWindow;
+    }
+
+    public static String openLinkInNewTab(String link) {
+        String currentHandle = driver.getWindowHandle();
+        ((JavascriptExecutor) driver).executeScript("window.open()");
+        //getting all the handles currently available
+        Set<String> handles = driver.getWindowHandles();
+        for (String actual : handles) {
+
+            if (!actual.equalsIgnoreCase(currentHandle)) {
+                //switching to the opened tab
+                driver.switchTo().window(actual);
+
+                //opening the URL saved.
+                driver.get(link);
+            }
+        }
+        return currentHandle;
     }
 }

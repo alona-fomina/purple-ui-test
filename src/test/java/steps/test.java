@@ -34,17 +34,28 @@ public class test {
 //        System.out.println(new Faker(new Locale("en-US")).address().fullAddress());
 
 //        System.out.println(Faker.instance().number().numberBetween(0,5));
-
+//
+//        Faker faker = new Faker(new Locale("en-us"));
+////        String state = faker.address().stateAbbr();
+////        System.out.println(state);
+////        System.out.println(faker.address().zipCodeByState(state));
+//        System.out.println(faker.internet().domainName());
+//        System.out.println(faker.internet().emailAddress());
+//        System.out.println(faker.internet().safeEmailAddress());
+//        System.out.println(faker.internet().domainSuffix());
+//
+//
         Faker faker = new Faker(new Locale("en-us"));
-//        String state = faker.address().stateAbbr();
-//        System.out.println(state);
-//        System.out.println(faker.address().zipCodeByState(state));
-        System.out.println(faker.internet().domainName());
-        System.out.println(faker.internet().emailAddress());
-        System.out.println(faker.internet().safeEmailAddress());
-        System.out.println(faker.internet().domainSuffix());
 
+        String firstName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String phoneNumber = faker.phoneNumber().cellPhone();
+        String password = faker.internet().password(10,15, true, true);
 
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(password);
+        System.out.println(phoneNumber);
     }
 
 }

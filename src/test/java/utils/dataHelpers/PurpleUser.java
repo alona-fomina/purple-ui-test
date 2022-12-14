@@ -40,8 +40,8 @@ public class PurpleUser {
 
     public static PurpleUser getInstance() {
         return new PurpleUser(
-                "Alona",
-                "Fomina",
+                "Test",
+                "Automation",
                 "purple.test.automation@outlook.com",
                 "99999999999",
                 "Automation123.",
