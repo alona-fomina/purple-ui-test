@@ -50,11 +50,7 @@ public class test {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         String phoneNumber = faker.phoneNumber().cellPhone();
-        String password = faker.internet().password(10,15, true, true);
 
-        System.out.println(firstName);
-        System.out.println(lastName);
-        System.out.println(password);
         System.out.println(phoneNumber);
     }
 

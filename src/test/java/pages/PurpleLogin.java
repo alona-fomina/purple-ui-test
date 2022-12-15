@@ -18,6 +18,8 @@ public class PurpleLogin extends ParentPage{
     private WebElement submitButton;
 
     public void login(String email, String pass){
+        loginInput.clear();
+        passInput.clear();
         loginInput.sendKeys(email);
         passInput.sendKeys(pass);
         submitButton.click();

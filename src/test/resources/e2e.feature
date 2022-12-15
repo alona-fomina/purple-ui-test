@@ -2,7 +2,7 @@
 Feature: Go to Pillow
 
   Background:
-    Given user goes to "https://purple.com"
+    Given user goes to homepage
 
     Scenario: Buying mattress flow
       Then user click on the mattress page

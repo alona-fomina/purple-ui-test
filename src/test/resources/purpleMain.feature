@@ -2,7 +2,7 @@
 Feature: Testing main page
 
   Background:
-    Given user goes to "https://purple.com"
+    Given user goes to homepage
 
     @Regression
   Scenario: Validating main page

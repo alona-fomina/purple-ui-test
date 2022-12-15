@@ -16,4 +16,11 @@ public class FrameUtils {
         Hooks.driver.switchTo().parentFrame();
     }
 
+    public static String getAttributesFromIFrameElement(WebElement frame, WebElement element, String att){
+        Hooks.driver.switchTo().frame(frame);
+        String attVal = element.getAttribute(att);
+        Hooks.driver.switchTo().parentFrame();
+        return attVal;
+    }
+
 }
