@@ -10,6 +10,8 @@ import pages.bedding.BeddingPage;
 import pages.mattress.MattressesPage;
 import pages.myAccount.CreateAccountPage;
 import pages.myAccount.SignInPage;
+import pages.myAccount.TempEmailPage;
+import pages.myAccount.UserDashboard;
 import pages.pillows.PillowPage;
 import pages.seatCushions.SeatCushionsPage;
 import pages.sheets.SheetsPage;
@@ -34,10 +36,13 @@ public class Hooks {
     public static CreateAccountPage createAccountPage;
     public static PurpleUser purpleUser;
     public static PurpleUser purpleRandomUser;
+    public static TempEmailPage tempEmailPage;
+    public static UserDashboard userDashboard;
 
     @Before
     public void setup() {
         driver = Driver.getDriver();
+
         purpleMain = new PurpleMain();
         purpleMattressesPage = new MattressesPage();
         purpleCartsPage = new PurpleCartsPage();
@@ -51,8 +56,13 @@ public class Hooks {
         seatCushionsPage = new SeatCushionsPage();
         signInPage = new SignInPage();
         createAccountPage = new CreateAccountPage();
+        tempEmailPage = new TempEmailPage();
+        userDashboard = new UserDashboard();
+
         purpleUser = PurpleUser.getInstance();
         purpleRandomUser = PurpleUser.getRandomInstance();
+
+        System.out.println("EXISTING USER = \"" + purpleUser + "\nRANDOM USER = " + purpleRandomUser);
     }
 
     @After

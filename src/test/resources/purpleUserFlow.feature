@@ -3,7 +3,7 @@ Feature: Testing User Flow
 
   Background:
 #    Given user goes to "https://purple3qa2.prod.acquia-sites.com/"
-    Given user goes to "https://purple.com/"
+    Given user goes to homepage
     And user waits 5 seconds
     And dismisses the popup
 #    And user agrees with the privacy policy

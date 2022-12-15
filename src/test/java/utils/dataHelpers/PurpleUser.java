@@ -70,7 +70,7 @@ public class PurpleUser {
             state = faker.address().stateAbbr();
         } while (state.equals("AL") || state.equals("HI"));
         String zipCode = faker.address().zipCodeByState(state);
-        String phoneNumber = faker.phoneNumber().cellPhone();
+        String phoneNumber = faker.number().digits(10);
         String password = faker.internet().password(10, 16, true, true, true);
         String creditCardNumber = faker.finance().creditCard(CreditCardType.VISA).replaceAll("-", "");
         String creditCardExpirationDate = "" + faker.number().numberBetween(10, 12) + faker.number().numberBetween(23, 33);

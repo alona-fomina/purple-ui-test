@@ -2,17 +2,19 @@
 Feature: login
 
   Background:
-    Given user goes to "https://features:watchoutforsharks@features.purple.com/"
+    Given user goes to homepage
 
   @CreatingAccount
   Scenario:
     And user click on My Account button
     Then user click Create One link
+    And user goes to "https://tempmailo.com/" and getting temporary email address
     And user puts user information in create account section
-    And user waits 5 seconds
+    And user verified email address
+    And user logs in with random user credentials
+    Then user validates random user dashboard
 
   @SignInAccount
   Scenario:
     And user click on My Account button
     And user logs in with "alona.f@purple.com", "Fominishna2" credentials
-    And user waits 5 seconds
