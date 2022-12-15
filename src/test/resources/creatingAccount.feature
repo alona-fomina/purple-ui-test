@@ -17,4 +17,4 @@ Feature: login
   @SignInAccount
   Scenario:
     And user click on My Account button
-    And user logs in with "alona.f@purple.com", "Fominishna2" credentials
+    And user logs in with "alona.f@purple.com", "" credentials
