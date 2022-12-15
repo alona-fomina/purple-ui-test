@@ -13,9 +13,16 @@ public class PillowPage {
     @FindBy(xpath = "(//a[@class='multi-image'])[1]")
     public WebElement purpleHarmonyPillow;
 
-    @FindBy(xpath = "//button[@data-testid='primary-button']/..")
-    public WebElement addToTheCarButton;
+    @FindBy(xpath = "(//a[@href='/pillows/purple-pillow'])[2]")
+    public WebElement purplePillow;
 
-    @FindBy(xpath = "//button[@data-testid='secondary-button']")
-    public WebElement noThanksContinueToCart;
+    @FindBy(xpath = "(//a[@href='/pillows/kids'])[3]")
+    public WebElement kidsPillow;
+
+    @FindBy(xpath = "(//a[@href='/pillows/twin-cloud'])[2]")
+    public WebElement twinCloudPillow;
+
+    @FindBy(xpath = "(//a[@href='/pillows/cloud'])[2]")
+    public WebElement cloudPillow;
+
 }
