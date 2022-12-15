@@ -11,4 +11,19 @@ public class SeatCushionsPage {
     }
     @FindBy(xpath = "(//a[@href='/seat-cushions/ultimate'])[4]")
     public WebElement ultimateSeatCushion;
+
+    @FindBy(xpath = "(//a[@href='/seat-cushions/office-chair'])[2]")
+    public WebElement doubleCushion;
+
+    @FindBy(xpath = "(//a[@href='/seat-cushions/royal'])[2]")
+    public WebElement royalCushion;
+
+    @FindBy(xpath = "(//a[@href='/seat-cushions/car'])[2]")
+    public WebElement simplyCushion;
+
+    @FindBy(xpath = "(//a[@href='/seat-cushions/portable'])[2]")
+    public WebElement portableCushion;
+
+    @FindBy(xpath = "(//a[@href='/seat-cushions/back'])[2]")
+    public WebElement backCushion;
 }

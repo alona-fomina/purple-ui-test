@@ -10,12 +10,6 @@ public class MattressesPage extends ParentPage {
         super();
     }
 
-    @FindBy(xpath = "//button[@data-testid='primary-button']/..")
-    public WebElement addToCartButton;
-
-    @FindBy(xpath = "//button[@data-testid='secondary-button']")
-    public WebElement noThanksContinueToCart;
-
     @FindBy(xpath = "(//a[@href='/mattresses/newday'])[4]")
     public WebElement newDayShopNow;
 

@@ -12,4 +12,10 @@ public class BedFramesPage {
     }
     @FindBy(xpath = "(//a[@href='/adjustable-bed-frame'])[4]")
     public WebElement ascentAdjustableBase;
+
+    @FindBy(xpath = "(//a[@href='/upholstered-bed-frame'])[2]")
+    public WebElement purpleBedFrame;
+
+    @FindBy(xpath = "(//a[@href='/platform-bed'])[2]")
+    public WebElement platformBedFrame;
 }

@@ -12,10 +12,16 @@ public class SheetsPage {
     @FindBy(xpath = "(//a[@href='/sheets/kids'])[2]")
     public WebElement kidsSheets;
 
-    @FindBy(xpath = "//button[@data-testid='primary-button']/..")
-    public WebElement addToTheCarButton;
+    @FindBy(xpath = "(//a[@href='/sheets/soft-stretch'])[3]")
+    public WebElement softStretchSheets;
 
-    @FindBy(xpath = "//button[@data-testid='secondary-button']")
-    public WebElement noThanksContinueToCart;
+    @FindBy(xpath = "(//a[@href='/sheets/complete-comfort-sheets'])[2]")
+    public WebElement completeComfortSheets;
+
+    @FindBy(xpath = "(//a[@href='/softstretch-pillowcase'])[2]")
+    public WebElement softStretchPillowcase;
+
+    @FindBy(xpath = "complete-comfort-pillowcase")
+    public WebElement completeComfortPillowcase;
 
 }
