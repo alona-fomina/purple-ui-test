@@ -10,7 +10,8 @@ public class BedFramesPage {
     public BedFramesPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-    @FindBy(xpath = "(//a[@href='/adjustable-bed-frame'])[4]")
+
+    @FindBy(xpath = "(//a[@href='/adjustable-bed-frame'])[5]")
     public WebElement ascentAdjustableBase;
 
     @FindBy(xpath = "(//a[@href='/upholstered-bed-frame'])[2]")

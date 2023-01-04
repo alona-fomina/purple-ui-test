@@ -9,7 +9,7 @@ public class BeddingPage {
     public BeddingPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-    @FindBy(xpath = "(//a[@href='/duvet'])[2]")
+    @FindBy(xpath = "(//a[@href='/duvet'])[3]")
     public WebElement purpleDuvet;
 
     @FindBy(xpath = "(//a[@href='/mattress-protector'])[2]")

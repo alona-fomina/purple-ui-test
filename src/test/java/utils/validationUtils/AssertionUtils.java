@@ -13,6 +13,10 @@ public class AssertionUtils {
         Assert.assertTrue(driver.getCurrentUrl().startsWith(expectedURL));
     }
 
+    public static void validateURLContains(WebDriver driver, String expectedURL){
+        Assert.assertTrue(driver.getCurrentUrl().contains(expectedURL));
+    }
+
     /**Validating the text of the button
      * Checking if the button is displayed
      * Checking if the button enable

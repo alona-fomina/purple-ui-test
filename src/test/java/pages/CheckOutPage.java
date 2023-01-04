@@ -141,4 +141,7 @@ public class CheckOutPage extends ParentPage {
 
     @FindBy(css = "#stepshipping .pac-container div")
     public List<WebElement> autofillShippingAddresses;
+
+    @FindBy(xpath = "//*[contains(text(), ' fee')]/..")
+    public WebElement feeText;
 }

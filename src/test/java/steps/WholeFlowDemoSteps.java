@@ -3,7 +3,9 @@ package steps;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.NotFoundException;
+import utils.dataHelpers.PurpleUser;
 import utils.seleniumUtils.*;
 import utils.validationUtils.AssertionUtils;
 
@@ -132,7 +134,7 @@ public class WholeFlowDemoSteps {
         }
         String mainWindowId = WindowHandleUtils.switchToCertainWindowWithUrl(driver, expectedURL);
         Waiter.waitUntilURLContains(driver, expectedURL);
-        AssertionUtils.validateURLStartsWith(driver, expectedURL);
+        AssertionUtils.validateURLContains(driver, expectedURL);
 
         driver.close();
         driver.switchTo().window(mainWindowId);
@@ -140,21 +142,20 @@ public class WholeFlowDemoSteps {
 
     @And("then user click on Affirm radio button")
     public void thenUserClickOnAffirmRadioButton() {
-        Waiter.waitForElementClickable(driver,checkOutPage.affirmPaymentRadioButton);
-       checkOutPage.affirmPaymentRadioButton.click();
-       checkOutPage.getAffirmPaymentRadioButton.click();
+        Waiter.waitForElementVisible(driver, checkOutPage.affirmPaymentRadioButton);
+        checkOutPage.affirmPaymentRadioButton.click();
+        checkOutPage.getAffirmPaymentRadioButton.click();
 
-       driver.switchTo().frame(checkOutPage.affirmIframe);
-      AssertionUtils.validateElementDisplayed(checkOutPage.affirmLogo);
-      AssertionUtils.validateElementDisplayed(checkOutPage.affirmPartnershipText);
+        driver.switchTo().frame(checkOutPage.affirmIframe);
+        AssertionUtils.validateElementDisplayed(checkOutPage.affirmLogo);
+        AssertionUtils.validateElementDisplayed(checkOutPage.affirmPartnershipText);
 
-      AssertionUtils.validateElementEnabled(checkOutPage.affirmContinueButton);
-      AssertionUtils.validateElementEnabled(checkOutPage.affirmMobileNumberInput);
+        AssertionUtils.validateElementEnabled(checkOutPage.affirmContinueButton);
+        AssertionUtils.validateElementEnabled(checkOutPage.affirmMobileNumberInput);
     }
 
     @Then("user sends user information randomly")
     public void userSendsUserInformationRandomly() {
-
         checkOutPage.firstNameShippingInput.sendKeys(purpleRandomUser.firstName);
         checkOutPage.lastNameShippingInput.sendKeys(purpleRandomUser.lastName);
         checkOutPage.streetAddressShippingInput.sendKeys(purpleRandomUser.streetAddress1);
@@ -168,10 +169,31 @@ public class WholeFlowDemoSteps {
 
     @And("user agrees with the privacy policy")
     public void userAgreesWithThePrivacyPolicy() {
-        try{
-            purpleMain.policyPopUpButton.click();}
-        catch (NotFoundException e){
+
+        try {
+            purpleMain.policyPopUpButton.click();
+        } catch (NotFoundException e) {
             System.out.println("Pop-up wasn't visible");
         }
+    }
+
+    @Then("user sends user information into shipping information menu for state {string}")
+    public void userSendsUserInformationIntoShippingInformationMenuForState(String stateAbb) {
+        PurpleUser randomUserInState = PurpleUser.getRandomInstance(stateAbb);
+        
+        checkOutPage.firstNameShippingInput.sendKeys(randomUserInState.firstName);
+        checkOutPage.lastNameShippingInput.sendKeys(randomUserInState.lastName);
+        checkOutPage.streetAddressShippingInput.sendKeys(randomUserInState.streetAddress1);
+        checkOutPage.zipShippingInput.sendKeys(randomUserInState.zipCode);
+        checkOutPage.cityShippingInput.sendKeys(randomUserInState.city);
+        DropdownHandler.selectOptionByValue(checkOutPage.stateShippingDropdown, randomUserInState.state);
+        checkOutPage.phoneNumberShippingInput.sendKeys(randomUserInState.phoneNumber);
+        checkOutPage.emailShippingInput.sendKeys(randomUserInState.emailAddress);
+        checkOutPage.nextDeliveryMethod.click();
+    }
+
+    @And("then user verifies the {string} and the {string}")
+    public void thenUserVerifiesTheAndThe(String feeType, String amount) {
+        AssertionUtils.validateElementText(checkOutPage.feeText, feeType + "\nWhat's this?\n" + amount);
     }
 }

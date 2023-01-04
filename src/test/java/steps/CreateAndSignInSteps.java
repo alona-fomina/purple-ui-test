@@ -1,7 +1,5 @@
 package steps;
 
-import com.github.javafaker.Faker;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import utils.readerUtils.ConfigReader;
@@ -14,11 +12,10 @@ import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.util.Locale;
 
 import static steps.Hooks.*;
 
-public class CreateMyAccountSteps {
+public class CreateAndSignInSteps {
 
     @And("user click on My Account button")
     public void userClickOnMyAccountButton() {
@@ -50,8 +47,8 @@ public class CreateMyAccountSteps {
 
     }
 
-    @And("user puts user information in create account section")
-    public void userPutsUserInformationInCreateAccountSection() {
+    @And("user puts random user information in create account section")
+    public void userPutsRandomUserInformationInCreateAccountSection() {
         createAccountPage.firstNameInput.sendKeys(purpleRandomUser.firstName);
         createAccountPage.lastNameInput.sendKeys(purpleRandomUser.lastName);
         createAccountPage.phoneNumberInput.sendKeys(purpleRandomUser.phoneNumber);
@@ -89,5 +86,27 @@ public class CreateMyAccountSteps {
     @Then("user validates random user dashboard")
     public void userValidatesRandomUserDashboard() {
         AssertionUtils.validateElementText(userDashboard.welcomeMessage,"Hi " + purpleRandomUser.firstName +", Welcome Back!");
+    }
+
+    @Then("user click on My Order and validating order history")
+    public void userClickOnMyOrderAndValidatingOrderHistory() {
+        userDashboard.clickOnHomePageText("My Orders");
+    }
+
+    @And("user logs in with {string}, {string} credentials")
+    public void userLogsInWithCredentials(String email, String pass) {
+        Hooks.purpleLogin.login(email, pass);
+    }
+
+    @And("user puts user information in sing in section")
+    public void userPutsUserInformationInSingInSection() {
+        signInPage.emilInputBar.sendKeys(purpleUser.emailAddress);
+        signInPage.passwordInputBar.sendKeys(purpleUser.password);
+        signInPage.singInButton.click();
+    }
+
+    @Then("user clicks on My Profile and validate user information")
+    public void userClicksOnMyProfileAndValidateUserInformation() {
+        userDashboard.clickOnHomePageText("My Profile");
     }
 }

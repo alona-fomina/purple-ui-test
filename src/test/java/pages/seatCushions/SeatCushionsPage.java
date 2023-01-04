@@ -9,7 +9,7 @@ public class SeatCushionsPage {
     public SeatCushionsPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-    @FindBy(xpath = "(//a[@href='/seat-cushions/ultimate'])[4]")
+    @FindBy(xpath = "(//a[@href='/seat-cushions/ultimate'])[2]")
     public WebElement ultimateSeatCushion;
 
     @FindBy(xpath = "(//a[@href='/seat-cushions/office-chair'])[2]")
