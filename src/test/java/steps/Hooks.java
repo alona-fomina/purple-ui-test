@@ -21,6 +21,7 @@ import utils.validationUtils.ReportUtils;
 
 public class Hooks {
     public static WebDriver driver;
+
     public static PurpleMain purpleMain;
     public static MattressesPage purpleMattressesPage;
     public static PurpleCartsPage purpleCartsPage;
@@ -34,10 +35,12 @@ public class Hooks {
     public static SeatCushionsPage seatCushionsPage;
     public static SignInPage signInPage;
     public static CreateAccountPage createAccountPage;
-    public static PurpleUser purpleUser;
-    public static PurpleUser purpleRandomUser;
     public static TempEmailPage tempEmailPage;
     public static UserDashboard userDashboard;
+
+    public static PurpleUser purpleUser;
+    public static PurpleUser purpleRandomUser;
+    public static PurpleUser purpleRandomUser2;
 
     @Before
     public void setup() {
@@ -61,8 +64,13 @@ public class Hooks {
 
         purpleUser = PurpleUser.getInstance();
         purpleRandomUser = PurpleUser.getRandomInstance();
+        purpleRandomUser2 = PurpleUser.getRandomInstance();
 
-        System.out.println("EXISTING USER = \"" + purpleUser + "\nRANDOM USER = " + purpleRandomUser);
+        System.out.println(
+                "EXISTING USER = \"" + purpleUser
+                + "\nRANDOM USER = " + purpleRandomUser
+                + "\nRANDOM USER 2 = " + purpleRandomUser2
+        );
     }
 
     @After

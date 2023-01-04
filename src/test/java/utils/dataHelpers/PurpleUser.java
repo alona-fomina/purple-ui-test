@@ -3,9 +3,7 @@ package utils.dataHelpers;
 import com.github.javafaker.CreditCardType;
 import com.github.javafaker.Faker;
 
-import java.time.LocalDateTime;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 public class PurpleUser {
     public PurpleUser(String firstName, String lastName, String emailAddress, String phoneNumber, String password, String streetAddress1, String streetAddress2, String city, String state, String zipCode, String creditCardNumber, String creditCardExpirationDate, String creditCardSecurityCode) {
