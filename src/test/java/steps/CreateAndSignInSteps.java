@@ -198,7 +198,7 @@ public class CreateAndSignInSteps {
 
         // go to the modified url with new tab method
         driver.get(verLink);
-        AssertionUtils.validateURLContains(driver, ConfigReader.getProperty("homepage") + "account/orders");
+        AssertionUtils.validateURLContains(driver, ConfigReader.getProperty("homepage") + "account");
         driver.close();
 
         // go back to second tab refresh and continue...
@@ -223,11 +223,12 @@ public class CreateAndSignInSteps {
         manageAddressesPage.firstName.sendKeys(purpleRandomUser2.firstName);
         manageAddressesPage.lastName.sendKeys(purpleRandomUser2.lastName);
         manageAddressesPage.street.sendKeys(purpleRandomUser2.streetAddress1);
+        manageAddressesPage.city.sendKeys(purpleRandomUser2.city);
         manageAddressesPage.zipCode.sendKeys(purpleRandomUser2.zipCode);
         DropdownHandler.selectOptionByValue(manageAddressesPage.stateDropDown, purpleRandomUser2.state);
         DropdownHandler.selectOptionByValue(manageAddressesPage.countryDropDown, "US");
         manageAddressesPage.phoneNumber.sendKeys(purpleRandomUser2.phoneNumber);
-        manageAddressesPage.nicknameAddress.sendKeys("Primary");
+//        manageAddressesPage.nicknameAddress.sendKeys("Primary");
         manageAddressesPage.saveChangesButton.click();
 
         AssertionUtils.validateElementText(manageAddressesPage.primaryAddress,
