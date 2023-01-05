@@ -11,7 +11,10 @@ import pages.mattress.MattressesPage;
 import pages.myAccount.CreateAccountPage;
 import pages.myAccount.SignInPage;
 import pages.myAccount.TempEmailPage;
-import pages.myAccount.UserDashboard;
+import pages.myAccount.myProfilePages.ManageAddressesPage;
+import pages.myAccount.myProfilePages.MyProfilePage;
+import pages.myAccount.myProfilePages.OrdersPage;
+import pages.myAccount.myProfilePages.UserDashboard;
 import pages.pillows.PillowPage;
 import pages.seatCushions.SeatCushionsPage;
 import pages.sheets.SheetsPage;
@@ -37,6 +40,9 @@ public class Hooks {
     public static CreateAccountPage createAccountPage;
     public static TempEmailPage tempEmailPage;
     public static UserDashboard userDashboard;
+    public static OrdersPage ordersPage;
+    public static MyProfilePage myProfilePage;
+    public static ManageAddressesPage manageAddressesPage;
 
     public static PurpleUser purpleUser;
     public static PurpleUser purpleRandomUser;
@@ -61,6 +67,9 @@ public class Hooks {
         createAccountPage = new CreateAccountPage();
         tempEmailPage = new TempEmailPage();
         userDashboard = new UserDashboard();
+        ordersPage = new OrdersPage();
+        myProfilePage = new MyProfilePage();
+        manageAddressesPage = new ManageAddressesPage();
 
         purpleUser = PurpleUser.getInstance();
         purpleRandomUser = PurpleUser.getRandomInstance();
