@@ -15,6 +15,12 @@ public class TempEmailPage {
     @FindBy(xpath = "(//button[@class='prim-btn'])[1]")
     public WebElement refreshButton;
 
+    @FindBy(xpath = "(//button[@class='prim-btn'])[2]")
+    public WebElement changeButton;
+
+    @FindBy(css = ".pure-button-primary")
+    public WebElement popUpOk;
+
     @FindBy(css = ".mail-item")
     public WebElement emailItem;
 

@@ -1,26 +1,29 @@
 package utils.validationUtils;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utils.seleniumUtils.Waiter;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AssertionUtils {
-    public static void validateURLStartsWith(WebDriver driver, String expectedURL){
-        Assert.assertTrue(driver.getCurrentUrl().startsWith(expectedURL));
+
+
+    public static void validateURLContains(WebDriver driver, String expectedURL) {
+        Waiter.waitUntilURLContains(driver, expectedURL);
+        assertTrue(driver.getCurrentUrl().contains(expectedURL));
     }
 
-    public static void validateURLContains(WebDriver driver, String expectedURL){
-        Assert.assertTrue(driver.getCurrentUrl().contains(expectedURL));
-    }
-
-    /**Validating the text of the button
+    /**
+     * Validating the text of the button
      * Checking if the button is displayed
      * Checking if the button enable
-     * @param element WebElement
+     *
+     * @param element      WebElement
      * @param expectedText expected text
      */
     public static void validateButton(WebElement element, String expectedText) {
@@ -28,9 +31,10 @@ public class AssertionUtils {
         validateElementText(element, expectedText);
     }
 
-    /**Validating button from the list of WebElements one by one
+    /**
+     * Validating button from the list of WebElements one by one
      *
-     * @param elements WebElement
+     * @param elements      WebElement
      * @param expectedTexts expected text
      */
     public static void validateButtons(List<WebElement> elements, List<String> expectedTexts) {
@@ -39,7 +43,8 @@ public class AssertionUtils {
         }
     }
 
-    /**Validating if the element is displayed and enable
+    /**
+     * Validating if the element is displayed and enable
      *
      * @param element WebElement
      */
@@ -48,19 +53,22 @@ public class AssertionUtils {
         validateElementEnabled(element);
     }
 
-    /**Validating if the element is displayed and enable
+    /**
+     * Validating if the element is displayed and enable
      *
      * @param element WebElement
      */
-    public static void validateElementLinks(List <WebElement> element) {
+    public static void validateElementLinks(List<WebElement> element) {
         for (WebElement webElement : element) {
             validateElementLink(webElement);
         }
     }
 
-    /**Validating if element is presented
+    /**
+     * Validating if element is presented
      * Validating if text of the element are equals to expected text
-     * @param element WebeElement
+     *
+     * @param element      WebeElement
      * @param expectedText expected text
      */
     public static void validateElementText(WebElement element, String expectedText) {
@@ -68,9 +76,23 @@ public class AssertionUtils {
         assertEquals(expectedText, element.getText());
     }
 
-    /**Validating WebElement text is equals to expected text from the List of Web Elements one by one
+    /**
+     * Validating if element is presented
+     * Validating if text of the element are equals to expected phone number with replacing (,),- " "
      *
-     * @param elements List Of the Web Elements
+     * @param element
+     * @param expectedText
+     */
+    public static void validatePhoneNumber(WebElement element, String expectedText) {
+        validateElementDisplayed(element);
+        assertEquals(element.getText().replaceAll("[()\\s-]", ""), expectedText);
+
+    }
+
+    /**
+     * Validating WebElement text is equals to expected text from the List of Web Elements one by one
+     *
+     * @param elements      List Of the Web Elements
      * @param expectedTexts expected text
      */
     public static void validateElementTexts(List<WebElement> elements, List<String> expectedTexts) {
@@ -79,97 +101,107 @@ public class AssertionUtils {
         }
     }
 
-    /**Validating if the element attribute text is equals to expected text
+    /**
+     * Validating if the element attribute text is equals to expected text
      *
-     * @param element WebElement
-     * @param attribute text of the attribute
+     * @param element           WebElement
+     * @param attribute         text of the attribute
      * @param expectedAttribute expected attribute
      */
     public static void validateElementAttribute(WebElement element, String attribute, String expectedAttribute) {
         assertEquals(expectedAttribute, element.getAttribute(attribute));
     }
 
-    /**Validating if the element attribute text is contains to expected attribute
+    /**
+     * Validating if the element attribute text is contains to expected attribute
      *
-     * @param element WebElement
-     * @param attribute text of the attribute
+     * @param element           WebElement
+     * @param attribute         text of the attribute
      * @param expectedAttribute expected attribute
      */
     public static void validateElementAttributeContains(WebElement element, String attribute, String expectedAttribute) {
         assertTrue(element.getAttribute(attribute).contains(expectedAttribute));
     }
 
-    /**Validating if the element attribute text is starts with expected attribute
+    /**
+     * Validating if the element attribute text is starts with expected attribute
      *
-     * @param element WebElement
-     * @param attribute text of the attribute
+     * @param element           WebElement
+     * @param attribute         text of the attribute
      * @param expectedAttribute expected attribute
      */
     public static void validateElementAttributeStartsWith(WebElement element, String attribute, String expectedAttribute) {
         assertTrue(element.getAttribute(attribute).startsWith(expectedAttribute));
     }
 
-    /**Validating if the element attribute text is ends with expected attribute
+    /**
+     * Validating if the element attribute text is ends with expected attribute
      *
-     * @param element WebElement
-     * @param attribute text of the attribute
+     * @param element           WebElement
+     * @param attribute         text of the attribute
      * @param expectedAttribute expected attribute
      */
     public static void validateElementAttributeEndsWith(WebElement element, String attribute, String expectedAttribute) {
         assertTrue(element.getAttribute(attribute).endsWith(expectedAttribute));
     }
 
-    /**Validating element css
+    /**
+     * Validating element css
      *
-     * @param element WebElement
-     * @param css actual css
+     * @param element     WebElement
+     * @param css         actual css
      * @param expectedCss expected css
      */
     public static void validateElementCss(WebElement element, String css, String expectedCss) {
         assertEquals(expectedCss, element.getCssValue(css));
     }
 
-    /**Validating element contains css
+    /**
+     * Validating element contains css
      *
-     * @param element WebElement
-     * @param css actual
+     * @param element     WebElement
+     * @param css         actual
      * @param expectedCss expected
      */
     public static void validateElementCssContains(WebElement element, String css, String expectedCss) {
         assertTrue(element.getCssValue(css).contains(expectedCss));
     }
 
-    /**Validating element starts with expected css
+    /**
+     * Validating element starts with expected css
      *
-     * @param element WebElement
-     * @param css actual
+     * @param element     WebElement
+     * @param css         actual
      * @param expectedCss expected
      */
     public static void validateElementCssStartsWith(WebElement element, String css, String expectedCss) {
         assertTrue(element.getCssValue(css).startsWith(expectedCss));
     }
 
-    /**Validating element ends with expected css
+    /**
+     * Validating element ends with expected css
      *
-     * @param element WebElement
-     * @param css actual
+     * @param element     WebElement
+     * @param css         actual
      * @param expectedCss expected
      */
     public static void validateElementCssEndsWith(WebElement element, String css, String expectedCss) {
         assertTrue(element.getCssValue(css).endsWith(expectedCss));
     }
 
-    /**Validating if the list of WebElements displayed
+    /**
+     * Validating if the list of WebElements displayed
      *
      * @param elements List of WebElements
      */
     public static void validateElementsDisplayed(List<WebElement> elements) {
         for (WebElement webElement : elements) {
-           validateElementDisplayed(webElement);
+            validateElementDisplayed(webElement);
         }
     }
 
-    /**Validating if the WebElement Displayed
+    /**
+     * Validating if the WebElement Displayed
      *
      * @param element WebElement
      */
@@ -177,7 +209,8 @@ public class AssertionUtils {
         assertTrue(element.isDisplayed());
     }
 
-    /**Validating if the WebElement Enabled
+    /**
+     * Validating if the WebElement Enabled
      *
      * @param element WebElement
      */
@@ -185,7 +218,8 @@ public class AssertionUtils {
         assertTrue(element.isEnabled());
     }
 
-    /**Validating if the WebElement Selected
+    /**
+     * Validating if the WebElement Selected
      *
      * @param element WebElement
      */
