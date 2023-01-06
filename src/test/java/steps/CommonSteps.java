@@ -13,6 +13,12 @@ public class CommonSteps {
 
     @Given("user goes to homepage")
     public void userGoesToHomepage() {
-        Hooks.driver.get(ConfigReader.getProperty("homepage"));
+        if (ConfigReader.getProperty("homepage").equals("https://features:watchoutforsharks@features.purple.com/")){
+            do {
+                Hooks.driver.get(ConfigReader.getProperty("homepage"));
+            }
+            while (Hooks.driver.getCurrentUrl().equals("https://purple.com/2"));
+        }
+
     }
 }
